@@ -1,171 +1,119 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 3: Web APIs & Classification
+# Reddit text analysis
 
-### Description
+### Objective
 
-In week four we've learned about a few different classifiers. In week five we'll learn about webscraping, APIs, and Natural Language Processing (NLP). Now we're going to put those skills to the test.
+The reason I chose two subreddits below is due to the nature of fashion at the moment. The erasure of the gender boundaries can be observed over the recent decade: female trends have become more masculine, adopting _"traditionally"_ male fashion pieces and jargon, whereas men's fashion showcased adaptation of _"traditionally"_ female fabrics such as chiffon and lace. I wanted to analyze how different are we in languages that we utilise in these _unisex_ setting.
+ 
+ 
+     - Male Fashion Advice with 2.2 mln subscribers
+     
+     - Female Fashion Advice with 850 k subscribers
 
-For project 3, your goal is two-fold:
-1. Using Reddit's API, you'll collect posts from two subreddits of your choosing.
-2. You'll then use NLP to train a classifier on which subreddit a given post came from. This is a binary classification problem.
-
-
-#### About the API
-
-Reddit's API is fairly straightforward. For example, if I want the posts from [`/r/boardgames`](https://www.reddit.com/r/boardgames), all I have to do is add `.json` to the end of the url: https://www.reddit.com/r/boardgames.json
-
-To help you get started, we have a primer video on how to use Reddit's API: https://www.youtube.com/watch?v=5Y3ZE26Ciuk
-
----
-
-### Requirements
-
-- Gather and prepare your data using the `requests` library.
-- **Create and compare two models**. One of these must be a Bayes classifier, however the other can be a classifier of your choosing: logistic regression, KNN, SVM, etc.
-- A Jupyter Notebook with your analysis for a peer audience of data scientists.
-- An executive summary of the results you found.
-- A short presentation outlining your process and findings for a semi-technical audience.
-
-**Pro Tip 1:** You can find a good example executive summary [here](https://www.proposify.biz/blog/executive-summary).
-
-**Pro Tip 2:** Reddit will give you 25 posts **per request**. To get enough data, you'll need to hit Reddit's API **repeatedly** (most likely in a `for` loop). _Be sure to use the `time.sleep()` function at the end of your loop to allow for a break in between requests. **THIS IS CRUCIAL**_
-
-**Pro tip 3:** The API will cap you at 1,000 posts for each subreddit (assuming the subreddit has that many posts).
-
-**Pro tip 4:** At the end of each loop, be sure to save the results from your scrape as a `csv`: JSON from Reddit > Pandas DataFrame > CSV. That way, if something goes wrong in your loop, you won't lose all your data.
-
----
-
-### Necessary Deliverables / Submission
-
-- Code and executive summary must be in a clearly commented Jupyter Notebook.
-- You must submit your slide deck.
-- Materials must be submitted by **10:00 AM on Friday, July 12th**.
-
----
-
-## Rubric
-Your local instructor will evaluate your project (for the most part) using the following criteria.  You should make sure that you consider and/or follow most if not all of the considerations/recommendations outlined below **while** working through your project.
-
-For Project 3 the evaluation categories are as follows:<br>
-**The Data Science Process**
-- Problem Statement
-- Data Collection
-- Data Cleaning & EDA
-- Preprocessing & Modeling
-- Evaluation and Conceptual Understanding
-- Conclusion and Recommendations
-
-**Organization and Professionalism**
-- Organization
-- Visualizations
-- Python Syntax and Control Flow
-- Presentation
-
-**Scores will be out of 30 points based on the 10 categories in the rubric.** <br>
-*3 points per section*<br>
-
-| Score | Interpretation |
-| --- | --- |
-| **0** | *Project fails to meet the minimum requirements for this item.* |
-| **1** | *Project meets the minimum requirements for this item, but falls significantly short of portfolio-ready expectations.* |
-| **2** | *Project exceeds the minimum requirements for this item, but falls short of portfolio-ready expectations.* |
-| **3** | *Project meets or exceeds portfolio-ready expectations; demonstrates a thorough understanding of every outlined consideration.* |
+These two subreddits are good in a sense that for malefashionadvice the majority of participants are prevalently men and vice versa for female thread, and most of the text would be used in the post not in the comment section, providing me with an opportunity to actually analyze the differences in gender languages.
 
 
-### The Data Science Process
-
-**Problem Statement**
-- Is it clear what the goal of the project is?
-- What type of model will be developed?
-- How will success be evaluated?
-- Is the scope of the project appropriate?
-- Is it clear who cares about this or why this is important to investigate?
-- Does the student consider the audience and the primary and secondary stakeholders?
-
-**Data Collection**
-- Was enough data gathered to generate a significant result?
-- Was data collected that was useful and relevant to the project?
-- Was data collection and storage optimized through custom functions, pipelines, and/or automation?
-- Was thought given to the server receiving the requests such as considering number of requests per second?
-
-**Data Cleaning and EDA**
-- Are missing values imputed/handled appropriately?
-- Are distributions examined and described?
-- Are outliers identified and addressed?
-- Are appropriate summary statistics provided?
-- Are steps taken during data cleaning and EDA framed appropriately?
-- Does the student address whether or not they are likely to be able to answer their problem statement with the provided data given what they've discovered during EDA?
-
-**Preprocessing and Modeling**
-- Is text data successfully converted to a matrix representation?
-- Are methods such as stop words, stemming, and lemmatization explored?
-- Does the student properly split and/or sample the data for validation/training purposes?
-- Does the student test and evaluate a variety of models to identify a production algorithm (**AT MINIMUM:** Bayes and one other model)?
-- Does the student defend their choice of production model relevant to the data at hand and the problem?
-- Does the student explain how the model works and evaluate its performance successes/downfalls?
-
-**Evaluation and Conceptual Understanding**
-- Does the student accurately identify and explain the baseline score?
-- Does the student select and use metrics relevant to the problem objective?
-- Does the student interpret the results of their model for purposes of inference?
-- Is domain knowledge demonstrated when interpreting results?
-- Does the student provide appropriate interpretation with regards to descriptive and inferential statistics?
-
-**Conclusion and Recommendations**
-- Does the student provide appropriate context to connect individual steps back to the overall project?
-- Is it clear how the final recommendations were reached?
-- Are the conclusions/recommendations clearly stated?
-- Does the conclusion answer the original problem statement?
-- Does the student address how findings of this research can be applied for the benefit of stakeholders?
-- Are future steps to move the project forward identified?
 
 
-### Organization and Professionalism
+So the main objectives of the project are to:
 
-**Project Organization**
-- Are modules imported correctly (using appropriate aliases)?
-- Are data imported/saved using relative paths?
-- Does the README provide a good executive summary of the project?
-- Is markdown formatting used appropriately to structure notebooks?
-- Are there an appropriate amount of comments to support the code?
-- Are files & directories organized correctly?
-- Are there unnecessary files included?
-- Do files and directories have well-structured, appropriate, consistent names?
 
-**Visualizations**
-- Are sufficient visualizations provided?
-- Do plots accurately demonstrate valid relationships?
-- Are plots labeled properly?
-- Are plots interpreted appropriately?
-- Are plots formatted and scaled appropriately for inclusion in a notebook-based technical report?
+ - Analyze two subreddits and the difference in the language used in the two threads
+     
+     
+ - Create model with highest accuracy score and minimize Type I and Type II errors
+ 
+ 
+ ---
 
-**Python Syntax and Control Flow**
-- Is care taken to write human readable code?
-- Is the code syntactically correct (no runtime errors)?
-- Does the code generate desired results (logically correct)?
-- Does the code follows general best practices and style guidelines?
-- Are Pandas functions used appropriately?
-- Are `sklearn` and `NLTK` methods used appropriately?
 
-**Presentation**
-- Is the problem statement clearly presented?
-- Does a strong narrative run through the presentation building toward a final conclusion?
-- Are the conclusions/recommendations clearly stated?
-- Is the level of technicality appropriate for the intended audience?
-- Is the student substantially over or under time?
-- Does the student appropriately pace their presentation?
-- Does the student deliver their message with clarity and volume?
-- Are appropriate visualizations generated for the intended audience?
-- Are visualizations necessary and useful for supporting conclusions/explaining findings?
+### Project Overview
+
+1. For this project I had to pull in the data first, so I scraped the data using Reddit API
+
+    - I was able to collect enough dataset for my project around 3835 posts proportinately divided between two subreddits
+    
+    
+2. Data cleaning is an essentail part of any data science project
+
+    - There were missing values in the dataset, but I mostly didn't need these features for my model
+    
+    - The only features I was interested in are 'selftext' and 'title'
+    
+    - And I had to engineer the main feature since the actual posts are in the 'selftext' columns, but the may be missing due to the nature of the post, i.e. posing a question in the 'title' section
+    
+    
+3. As for data munging, I had to create the model first and analyze it performance
+
+    - Only then I could go back and create several lists for stop words to be used in the model
+    
+    
+4. In order to select the best fit model I utlized GridSearch and Pipeline in order to tweak the features of the transformer and used it on Naive Bayes model and Logistic Regression model
+
+    - Logistic Regression model performed substantially better and I was able to achieve zero false positives
+
+
+5. Data visualisation in order to analyze:
+
+    - what words are most common between two subreddits
+    
+    - word and sentence length
+    
+    - which words were assigned the highest coefficients
+    
+    
+6. Conclusions on the project
 
 
 ---
 
-### Why we choose this project for you?
-This project covers three of the biggest concepts we cover in the class: Classification Modeling, Natural Language Processing and Data Wrangling/Acquisition.
+### Useful links
 
-Part 1 of the project focuses on **Data wrangling/gathering/acquisition**. This is a very important skill as not all the data you will need will be in clean CSVs or a single table in SQL.  There is a good chance that wherever you land you will have to gather some data from some unstructured/semi-structured sources; when possible, requesting information from an API, but often scraping it because they don't have an API (or it's terribly documented).
+1. This is the link to the [Data Scraper NB](./Scraper.ipynb) in case you want to check out the code for scraping data using Reddit API
 
-Part 2 of the project focuses on **Natural Language Processing** and converting standard text data (like Titles and Comments) into a format that allows us to analyze it and use it in modeling.
+2. To check out the data cleaning process click on this link [Data Cleaning NB]('./Data_cleaning.ipynb')
 
-Part 3 of the project focuses on **Classification Modeling**.  Given that project 2 was a regression focused problem, we needed to give you a classification focused problem to practice the various models, means of assessment and preprocessing associated with classification.   
+3. Follow this link [Model NB](./Model_2.ipynb) to check out how Naive Bayes model performed against Logistic Regression model using GridSearch and Pipeline
+
+4. This is the link to the [Project NB](./Project_3.ipynb) which covers:
+    - EDA
+    - Model performance
+    - Coefficient analysis
+    - Conclusions on the project
+
+---
+
+### Conclusions
+
+As I stated at the beginning of the project the reason for choosing these two subreddits is due to the nature of the subreddits that gave me an opportunity to pull texts that was actually utilised by both genders in their realted subreddits. And it is clear that there is a big overlap in the words that are used in the fashion context.
+
+
+In order to make sure that my model is unbiased as possible, I got rid of gender related words and tried running my model with and without the stopwords, and it turns out that the accuracy score jumps up by 10% if I leave the English stop words in. This in conjunction with the EDA and careful data analysis leads me to the conclusions below:
+
+1. The way we structure our language differs between genders:
+
+
+     - Posters in Male subreddit tend to use less words in their sentences and posts
+     
+     - They also tend to abbreviate words more, and hence the high frequency usage of the **$** sign
+
+
+2. Posters on female fashion advice tend to use more emotional language or word describing emotions such as **love and feel**
+
+
+3. Although there is a vast amount of overlapping words that are used in the fashion context, phrases and words substantially differ between the two subreddits. Certain words such as 'shirt', 'chinos' or 'dress' have high impact on the predictions ability of the model.
+
+
+4. Logistic Regression performed better for me in terms of this project as opposed to Naive Bayes, since not only does it have 99$%$ accuracy score but also it is more interpretable so that it helps to analyze what words are the best predictors.
+
+
+---
+
+### Possible applications of the project:
+
+1. This model can be used to determine what words are most impactful on gender in terms of marketing fashion products
+
+
+2. It can be used to define who is commenting certain posts/news
+
+
+3. It can be used to simulate human-like behaviour, etc.
