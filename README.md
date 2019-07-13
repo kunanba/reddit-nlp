@@ -70,7 +70,7 @@ So the main objectives of the project are to:
 
 1. This is the link to the [Data Scraper NB](./Scraper.ipynb) in case you want to check out the code for scraping data using Reddit API
 
-2. To check out the data cleaning process click on this link [Data Cleaning NB]('./Data_cleaning.ipynb')
+2. To check out the data cleaning process click on this link [Data Cleaning NB](./Data_cleaning.ipynb)
 
 3. Follow this link [Model NB](./Model_2.ipynb) to check out how Naive Bayes model performed against Logistic Regression model using GridSearch and Pipeline
 
